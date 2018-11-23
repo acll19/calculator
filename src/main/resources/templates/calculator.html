@@ -19,11 +19,11 @@
 <div class="row col s12" style="padding: 50px;">
     <div class="row col s6">
         <div class="row col s4">
-            <form lass="col s12" action="#" th:action="@{/}" th:object="${calculatorForm}" method="post">
+            <form th:id="myForm" class="col s12" action="#" th:action="@{/}" th:object="${calculatorForm}" method="post">
                 <input type="hidden" th:id="operationId" th:value="1" name="operation"/>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="number_a" type="text" class="validate" th:field="*{a}">
+                        <input id="number_a" type="number" class="validate" th:field="*{a}">
                         <label for="number_a">Valor A</label>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="number_b" type="text" class="validate" th:field="*{b}">
+                        <input id="number_b" type="number" class="validate" th:field="*{b}">
                         <label for="number_b">Valor B</label>
                     </div>
                 </div>
