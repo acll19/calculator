@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Calculadora Cuántica</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo center">Calculadora Cuántica</a>
+    </div>
+</nav>
+
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s4">
+                <input id="number_a" type="text" class="validate">
+                <label for="number_a">Valor A</label>
+            </div>
+            <div class="input-field col s4">
+                <!-- Dropdown Trigger -->
+                <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
+
+                <!-- Dropdown Structure -->
+                <ul id='dropdown1' class='dropdown-content'>
+                    <li><a href="#!">one</a></li>
+                    <li><a href="#!">two</a></li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li><a href="#!">three</a></li>
+                    <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+                    <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+                </ul>
+            </div>
+            <div class="input-field col s4">
+                <input id="number_b" type="text" class="validate">
+                <label for="number_b">Valor B</label>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.dropdown-trigger');
+        var instances = M.Dropdown.init(elems, options);
+    });
+</script>
+
+</body>
+</html>
