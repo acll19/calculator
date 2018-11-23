@@ -1,0 +1,15 @@
+FROM maven:3.5-jdk-8-alpine AS build
+RUN apk add --no-cache git
+RUN git clone https://github.com/jaironegrete12/calculator
+ADD ./spring.sh /calculator/spring.sh
+RUN mvn -f /calculator/pom.xml clean installdock
+
+
+FROM openjdk:8-jre-alpine
+COPY --from=build /calculator/target/calculator-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /calculator/spring.sh spring.sh
+RUN chmod 777 -R /spring.sh
+ENV JAVA_OPTS -Xms256m -Xmx512m
+RUN adduser -D javauser
+USER javauser
+CMD /bin/sh spring.sh --httpPort=$PORT
