@@ -3,80 +3,95 @@
 <head>
     <title>Calculadora Cuántica</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 <body>
+<style>
+    #wrapper {
+        text-align: center;
+    }
 
+    #calculatorDiv {
+        display: inline-block;
+    }
+
+
+</style>
 <nav>
     <div class="nav-wrapper">
         <a href="/" class="brand-logo center">Calculadora Cuántica</a>
     </div>
 </nav>
-
-<div class="row col s12" style="padding: 50px;">
-    <div class="row col s6">
-        <div class="row col s4">
-            <form th:id="myForm" class="col s12" action="#" th:action="@{/}" th:object="${calculatorForm}" method="post">
-                <input type="hidden" th:id="operationId" th:value="1" name="operation"/>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="number_a" type="number" class="validate" th:field="*{a}">
-                        <label for="number_a">Valor A</label>
+<div id="wrapper">
+    <div id="calculatorDiv" class="row col s12" style="padding-top: 50px;">
+        <form th:id="myForm" class="col s12" action="#" th:action="@{/}" th:object="${calculatorForm}" method="post">
+            <input type="hidden" th:id="operationId" th:value="1" name="operation"/>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="number_a" type="number" class="validate" th:field="*{a}" required>
+                    <label for="number_a">Valor A</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s3 center-align">
+                    <a class="btn-floating waves-effect waves-light blue" onclick="selectOperation(1)"><i
+                            class="material-icons">add</i></a>
+                </div>
+                <div class="input-field col s3 center-align">
+                    <a class="btn-floating waves-effect waves-light blue" onclick="selectOperation(2)"><i
+                            class="material-icons">remove</i></a>
+                </div>
+                <div class="input-field col s3 center-align">
+                    <a class="btn-floating waves-effect waves-light blue" onclick="selectOperation(3)"><i
+                            class="material-icons">close</i></a>
+                </div>
+                <div class="input-field col s3 center-align">
+                    <a class="btn-floating waves-effect waves-light blue" onclick="selectOperation(4)">/</a>
+                </div>
+            </div>
+            <div class="row">
+                <span id="operatorString"></span>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="number_b" type="number" class="validate" th:field="*{b}" required>
+                    <label for="number_b">Valor B</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6 center-align">
+                </div>
+                <div class="input-field col s6 center-align">
+                    <button class="btn waves-effect waves-light btn-large" type="submit" name="action">
+                        =
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card horizontal">
+                    <div class="card-content">
+                        <span th:text="${calculatorForm.result}" style="font-size: xx-large;"></span>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="input-field col s3 center-align">
-                        <a class="btn-floating waves-effect waves-light red" onclick="selectOperation(1)"><i
-                                class="material-icons">add</i></a>
-                    </div>
-                    <div class="input-field col s3 center-align">
-                        <a class="btn-floating waves-effect waves-light red" onclick="selectOperation(2)"><i
-                                class="material-icons">remove</i></a>
-                    </div>
-                    <div class="input-field col s3 center-align">
-                        <a class="btn-floating waves-effect waves-light red" onclick="selectOperation(3)"><i
-                                class="material-icons">close</i></a>
-                    </div>
-                    <div class="input-field col s3 center-align">
-                        <a class="btn-floating waves-effect waves-light red" onclick="selectOperation(4)">/</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="number_b" type="number" class="validate" th:field="*{b}">
-                        <label for="number_b">Valor B</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6 center-align">
-                    </div>
-                    <div class="input-field col s6 center-align">
-                        <button class="btn waves-effect waves-light btn-large" type="submit" name="action">
-                            =
-                        </button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="card horizontal">
-                        <div class="card-content">
-                            <span th:text="${calculatorForm.result}" style="font-size: xx-large;"></span>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 </div>
-</div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
     function selectOperation(operationCode) {
         document.getElementById('operationId').value = operationCode;
+        if(operationCode === 1)
+            $("#operatorString").text("+");
+        else if (operationCode === 2)
+            $("#operatorString").text("-");
+        else if (operationCode === 3)
+            $("#operatorString").text("X");
+        else if (operationCode === 4)
+            $("#operatorString").text("/");
     }
 
     function resetForm() {
