@@ -1,7 +1,7 @@
-package com.test.calculator.controller;
+package com.demo.calculator.controller;
 
-import com.test.calculator.api.model.CalculatorForm;
-import com.test.calculator.api.service.OperationInterface;
+import com.demo.calculator.api.model.CalculatorForm;
+import com.demo.calculator.api.service.OperationInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +22,9 @@ public class CalculatorController {
 
     @PostMapping("/")
     public String setOperation(@ModelAttribute @Validated CalculatorForm calculatorForm, Model model) {
+        calculatorForm.setOperation(1);
         calculatorForm.setResult(operationInterface.calculate(calculatorForm));
+        System.out.println(calculatorForm.getResult());
         model.addAttribute("calculatorForm", new CalculatorForm());
         return "calculator";
     }

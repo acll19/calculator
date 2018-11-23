@@ -1,4 +1,4 @@
-package com.test.calculator.api.model;
+package com.demo.calculator.api.model;
 
 import javax.validation.constraints.NotNull;
 

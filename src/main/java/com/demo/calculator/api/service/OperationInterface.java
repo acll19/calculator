@@ -1,6 +1,6 @@
-package com.test.calculator.api.service;
+package com.demo.calculator.api.service;
 
-import com.test.calculator.api.model.CalculatorForm;
+import com.demo.calculator.api.model.CalculatorForm;
 
 public interface OperationInterface {
 

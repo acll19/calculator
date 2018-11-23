@@ -1,4 +1,4 @@
-package com.test.calculator.enums;
+package com.demo.calculator.enums;
 
 public enum OperationEnum {
     add  (1),

@@ -1,8 +1,8 @@
-package com.test.calculator.services;
+package com.demo.calculator.services;
 
-import com.test.calculator.api.model.CalculatorForm;
-import com.test.calculator.api.service.OperationInterface;
-import com.test.calculator.enums.OperationEnum;
+import com.demo.calculator.api.model.CalculatorForm;
+import com.demo.calculator.api.service.OperationInterface;
+import com.demo.calculator.enums.OperationEnum;
 import org.springframework.stereotype.Service;
 
 @Service
