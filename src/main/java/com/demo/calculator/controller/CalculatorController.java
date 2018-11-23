@@ -22,10 +22,8 @@ public class CalculatorController {
 
     @PostMapping("/")
     public String setOperation(@ModelAttribute @Validated CalculatorForm calculatorForm, Model model) {
-        calculatorForm.setOperation(1);
         calculatorForm.setResult(operationInterface.calculate(calculatorForm));
-        System.out.println(calculatorForm.getResult());
-        model.addAttribute("calculatorForm", new CalculatorForm());
+        model.addAttribute("calculatorForm", calculatorForm);
         return "calculator";
     }
 
