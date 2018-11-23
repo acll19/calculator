@@ -2,7 +2,7 @@ FROM maven:3.5-jdk-8-alpine AS build
 RUN apk add --no-cache git
 RUN git clone https://github.com/jaironegrete12/calculator
 ADD ./spring.sh /calculator/spring.sh
-RUN mvn -f /calculator/pom.xml clean installdock
+RUN mvn -f /calculator/pom.xml clean install
 
 
 FROM openjdk:8-jre-alpine
