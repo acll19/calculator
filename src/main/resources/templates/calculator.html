@@ -84,14 +84,15 @@
 <script>
     function selectOperation(operationCode) {
         document.getElementById('operationId').value = operationCode;
-        if(operationCode === 1)
+        if(operationCode === 1) {
             $("#operatorString").text("+");
-        else if (operationCode === 2)git
+        }else if (operationCode === 2) {
             $("#operatorString").text("-");
-        else if (operationCode === 3)
+        }else if (operationCode === 3) {
             $("#operatorString").text("X");
-        else if (operationCode === 4)
+        }else if (operationCode === 4){
             $("#operatorString").text("/");
+        }
     }
 
     function resetForm() {
